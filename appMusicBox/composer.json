@@ -32,5 +32,12 @@
 	"config": {
 		"preferred-install": "dist"
 	},
+	
+	{
+      "require": {
+        "videlalvaro/php-amqplib": "v2.1.0"
+	  }
+	}
 	"minimum-stability": "stable"
+	
 }

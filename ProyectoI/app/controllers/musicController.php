@@ -7,6 +7,8 @@ class musicController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+
+
 	public function index()
 	{
 		//
@@ -30,25 +32,38 @@ class musicController extends \BaseController {
 	 * @return Response
 	 */
 	public function store()
-	{
+	{   
 
-
-		 $archivo= $_FILES["archivo"]['tmp_name'];
-        $destino= "music/".$_FILES["archivo"]['name'];
-         
-
-		
+ $nombre = Input::get('nombre');
+        $route = '/home/logan/ProyectoI/music/';
 		$nombre = Input::get('nombre');
-		$ubicacion = Input::get('file');
-        
+		$file = Input::file('archivo'); 
+		$format = Input::get('format');
+		$filename = $file->getClientOriginalName();
+		$formato=$file->getClientOriginalExtension();
+//var_dump($format);
+if($formato=='mp3'||$formato=='mp4'||$formato=='wma'||$formato=='Aac'){
+ 
       
 
-       
+
+		$upload_success = Input::file('archivo')->move($route, $filename); 
+
+		$nombre = Input::get('nombre');
+      	
 		$music = new music;
 		$music->nombre = $nombre;
-		$music->ubicacion = $ubicacion;
+		$music->ubicacion = $route.$filename;
 		$music->save();
-return Redirect::to('datos');
+		return Redirect::to('musica');
+
+}else{
+
+echo "Error: Solo formato de audio";
+
+
+}
+
 	}
 
 

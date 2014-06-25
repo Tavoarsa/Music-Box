@@ -30,7 +30,7 @@
 		}
 
 		h1 {
-			font-size: 35px;
+			font-size: 32px;
 			margin: 16px 0 0 0;
 		}
 	</style>
@@ -60,16 +60,34 @@ Elija el archivo de audio para convertir:<br>
 <input type="submit" value="Subir">
 <input type="button" value="Descargar">
 </div>
-</form>--><div class="boxform">
-{{ Form::open(array('url' => 'datos', 'role' => 'form')) }}
+</form>-->
+<div class="boxform">
+<!--
+<form method="post" action="http://localhost:8000/store" enctype="multipart/form-data">
+ 
+     <label for="nombre">Nombre:</label>
+     <input type="text"  id="nombre" name="nombre"placeholder="Introduce tu nombre"><br><br>
+     <label for="archivo">Elija el archivo para convertir:</label>
+     <input type="file"  id="audiofile" name="audiofile"><br><br>
+     <input type="submit" value="Subir" id="submit" name="submit">
+     <input type="button" value="Descargar" id="button" name="button">
+ 
+</form>
+-->
+{{ Form::open(array('url' => 'musica', 'role' => 'form', 'enctype' => 'multipart/form-data')) }}
 	{{ Form::label('nombre', 'Nombre:')}}
     {{ Form::text('nombre', '')}}<br><br>
-    {{ Form::label('archivo', 'Elija el archivo para convertir:')}}
-    {{ Form::file('archivo', '')}}<br><br>
-    {{ Form::submit('subir', array('id' => 'submit'))}}
-    {{ Form::button('descargar', array('id' => 'button'))}}
+    {{ Form::label('archivo', 'Elija su archivo:')}}
+    {{ Form::file('archivo', '')}} <br><br>
+    {{ Form::submit('Subir', array('id' => 'submit'))}}
+	{{ Form::button('Descargar', array('id' => 'button'))}}
 	{{ Form::close() }}
+
+
+
+
 	</div>
+
 
 
 </body>

@@ -10,7 +10,8 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::resource('datos', 'musicController');
+Route::resource('musica', 'musicController');
+//Route::post('/store', 'musicController@s');
 
 Route::get('/', function()
 {
